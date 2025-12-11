@@ -1589,10 +1589,24 @@ with tabs[5]:
             elif 'UA' in scenario_name: scenario_type = 'UA'
         
         return {
-            t('scenario'): scenario_name, 'Scenario_Type': scenario_type, 'Growth_Pct': growth_pct,
-            t('product'): product_name, 'UA': ua, 'C1': c1, 'B': b, 'AOV': aov, 'APC': apc, 
-            'T': t, t('revenue'): revenue, 'AC': ac, 'CLTV': cltv, 'LTV': ltv, 
-            'CPA': cpa, 'CAC': cac, 'CM': cm, 'ROMI': romi
+            'Scenario': scenario_name,  
+            'Scenario_Type': scenario_type,
+            'Growth_Pct': growth_pct,
+            'Product': product_name,    
+            'UA': ua,
+            'C1': c1,
+            'B': b,
+            'AOV': aov,
+            'APC': apc,
+            'T': t,
+            'Revenue': revenue,        
+            'AC': ac,
+            'CLTV': cltv,
+            'LTV': ltv,
+            'CPA': cpa,
+            'CAC': cac,
+            'CM': cm,
+            'ROMI': romi
         }
 
     st.subheader(t('business_analysis'))
