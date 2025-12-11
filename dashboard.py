@@ -2431,23 +2431,24 @@ with tabs[1]:
             manager_stats.columns = [t('manager'), t('deals_count_full'), t('minimum'), t('median_full'), t('mean'), t('maximum')]
             
             # Фильтруем менеджеров с >=3 сделками
-            manager_stats = manager_stats[manager_stats[t('deals_count_full')] >= 3]
-            
+            # УБЕРИ ВСЕ t() из квадратных скобок:
+            manager_stats = manager_stats[manager_stats[('Id', 'count')] >= 3]
+
             if len(manager_stats) > 0:
                 st.subheader(t('manager_speed'))
                 
                 # Сортируем по медиане (быстрее → медленнее)
-                manager_stats = manager_stats.sort_values(t('median_full'), ascending=True)
+                manager_stats = manager_stats.sort_values(('Deal_Age_days', 'median'), ascending=True)
                 
                 st.dataframe(
                     manager_stats.style\
-                        .background_gradient(subset=[t('median_full')], cmap='RdYlGn_r')\
-                        .background_gradient(subset=[t('mean')], cmap='RdYlGn_r')\
+                        .background_gradient(subset=[('Deal_Age_days', 'median')], cmap='RdYlGn_r')\
+                        .background_gradient(subset=[('Deal_Age_days', 'mean')], cmap='RdYlGn_r')\
                         .format({
-                            t('minimum'): '{:.0f}',
-                            t('median_full'): '{:.1f}',
-                            t('mean'): '{:.1f}',
-                            t('maximum'): '{:.0f}'
+                            ('Deal_Age_days', 'min'): '{:.0f}',
+                            ('Deal_Age_days', 'median'): '{:.1f}',
+                            ('Deal_Age_days', 'mean'): '{:.1f}',
+                            ('Deal_Age_days', 'max'): '{:.0f}'
                         }),
                     use_container_width=True,
                     height=400
