@@ -531,16 +531,20 @@ if 'language' not in st.session_state:
 
 # Сайдбар с переключателем языка
 with st.sidebar:
-    st.markdown(f"### {t('select_language')}")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button(t('language_russian'), use_container_width=True):
-            st.session_state.language = 'RU'
-            st.rerun()
-    with col2:
-        if st.button(t('language_german'), use_container_width=True):
-            st.session_state.language = 'DE'
-            st.rerun()
+    # Используем radio вместо кнопок - безопаснее
+    selected_lang = st.radio(
+        t('select_language'),
+        options=['RU', 'DE'],
+        format_func=lambda x: t('language_russian') if x == 'RU' else t('language_german'),
+        index=0 if st.session_state.get('language', 'RU') == 'RU' else 1,
+        horizontal=True,
+        key='language_selector'
+    )
+    
+    # Если язык изменился - обновляем
+    if selected_lang != st.session_state.get('language', 'RU'):
+        st.session_state.language = selected_lang
+        st.rerun()
 
 st.markdown("""
 <style>
