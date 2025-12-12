@@ -3843,10 +3843,10 @@ with tabs[5]:
         
         st.write(f"**{t('sensitivity_insights')}**")
         for metric in ['UA', 'C1', 'AOV', 'APC']:
-            metric_data = sens_df[sens_df[t('metric')] == metric]
+            metric_data = sens_df[sens_df['Metric'] == metric]  # 'Metric' вместо t('metric')
             if not metric_data.empty:
-                max_impact = metric_data.loc[metric_data[t('cm_impact')].idxmax()]
-                st.write(f"- **{metric}**: {max_impact[t('change')]} → {t('cm_impact')}: {max_impact[t('cm_impact')]:+,.0f} €")
+                max_impact = metric_data.loc[metric_data['CM_Impact'].idxmax()]  # 'CM_Impact' вместо t('cm_impact')
+                st.write(f"- **{metric}**: {max_impact['Change']} → {t('cm_impact')}: {max_impact['CM_Impact']:+,.0f} €")
     
     # --- АНАЛИЗ ПО ПРОДУКТАМ ---
     st.subheader(t("product_analysis"))
