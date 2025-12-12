@@ -14,6 +14,9 @@ import io
 import warnings
 from statsmodels.stats.power import NormalIndPower
 warnings.filterwarnings('ignore')
+# Инициализация языка в session_state
+if 'language' not in st.session_state:
+    st.session_state.language = 'RU'
 
 # ========== СИСТЕМА ПЕРЕВОДОВ ==========
 TRANSLATIONS = {
@@ -512,7 +515,8 @@ TRANSLATIONS = {
 # Функция перевода
 def t(key):
     """Получить перевод по ключу для текущего языка"""
-    return TRANSLATIONS.get(st.session_state.language, {}).get(key, key)
+    current_lang = st.session_state.get('language', 'RU') 
+    return TRANSLATIONS.get(current_lang, {}).get(key, key)
 
 # ========== НАСТРОЙКА СТРАНИЦЫ И САЙДБАР ==========
 st.set_page_config(
