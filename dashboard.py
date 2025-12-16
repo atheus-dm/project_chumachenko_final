@@ -14,9 +14,6 @@ import io
 import warnings
 from statsmodels.stats.power import NormalIndPower
 warnings.filterwarnings('ignore')
-# Инициализация языка в session_state
-if 'language' not in st.session_state:
-    st.session_state.language = 'RU'
 
 # ========== СИСТЕМА ПЕРЕВОДОВ ==========
 TRANSLATIONS = {
@@ -264,6 +261,60 @@ TRANSLATIONS = {
         'upsell_pricing': 'Up-sell и цены',
         'retention_loyalty': 'Удержание и лояльность',
         'ad_optimization': 'Оптимизация рекламы',
+
+        # НОВЫЕ ПЕРЕВОДЫ ИЗ 33 ПУНКТОВ
+        'total': 'ВСЕГО',
+        'reason': 'Причина',
+        'count': 'Кол-во',
+        'share_percent': 'Доля %',
+        'one_deal': '1 сделка',
+        'two_three': '2-3',
+        'four_ten': '4-10',
+        'eleven_thirty': '11-30',
+        'thirty_one_hundred': '31-100',
+        'hundred_plus': '100+',
+        'group': 'Группа',
+        'cities': 'Города',
+        'revenue_share': 'Доля выручки',
+        'revenue_per_city': 'Выручка на город',
+        'cities_count': 'Городов',
+        'share': 'Доля',
+        'b_buyers': 'B (Покупатели)',
+        'ua_total_traffic': 'UA (Общий трафик)',
+        'c1_conversion_table': 'C1 (Конверсия)',
+        'hadi_cycle': 'HADI-цикл',
+        'stage': 'Этап',
+        'formulation': 'Формулировка',
+        'parameter': 'Параметр',
+        'null_hypothesis': 'Нулевая гипотеза',
+        'a_test_conditions': 'Условия проведения A-теста',
+        'b_test_conditions': 'Условия проведения B-теста',
+        'tracking_metric': 'Метрика для отслеживания',
+        'hypothesis_confirmation_threshold': 'Граница подтверждения гипотезы',
+        'significance_level': 'Уровень значимости',
+        'description': 'Описание',
+        'base_c1': 'Базовый C1',
+        'target_effect_mde': 'Целевой эффект (MDE)',
+        'leads_per_day_group': 'Лидов/день (группа)',
+        'days_for_test': 'Дней для теста',
+        'leads_per_group': 'Лидов на группу',
+
+        # Дополнительные тексты (из больших блоков)
+        'tree_level_1': 'УРОВЕНЬ 1: ТОП МЕНЕДЖЕРОВ',
+        'tree_level_2': 'УРОВЕНЬ 2: ЮНИТ-ЭКОНОМИКА БИЗНЕСА',
+        'tree_level_3': 'УРОВЕНЬ 3: АНАЛИЗ ПРОДУКТОВ',
+        'tree_level_4': 'УРОВЕНЬ 4: ДЕТАЛЬНАЯ СТАТИСТИКА ПО ИСТОЧНИКАМ',
+        'tree_level_5': 'УРОВЕНЬ 5: ДОПОЛНИТЕЛЬНЫЕ МЕТРИКИ',
+        'tree_insights_title': 'ИНСАЙТЫ АНАЛИЗА:',
+        'tree_formula_b': 'B = UA × C1 (Уникальные клиенты = UA × Конверсия)',
+        'tree_formula_revenue': 'Revenue = AOV × T (Выручка = AOV на транзакцию × Количество платежей)',
+        'tree_formula_t': 'T = B × APC (Количество платежей = Уникальные клиенты × Сколько раз в среднем платит студент)',
+        'tree_formula_cac': 'CAC = AC / B (Цена одного покупателя = Весь маркетинговый бюджет школы / Уникальные клиенты)',
+        'tree_formula_cltv': 'CLTV = (AOV - COGS) × APC (Прибыль с одного платящего клиента = (AOV на транзакцию - Себестоимость) × Сколько раз в среднем платит студент)',
+        'tree_formula_ltv': 'LTV = CLTV × C1 (Прибыль с одного посетителя = Прибыль с одного платящего клиента × Конверсия)',
+        'tree_formula_cm': 'CM = Revenue - AC - COGS (Маржинальный вклад = Выручка - Маркетинг бюджет - Себестоимость)',
+        'tree_formula_romi': 'ROMI = CM / AC (Окупаемость рекламы = Маржинальный вклад / Маркетинг бюджет)',
+        'tree_footer': 'Примечание: данные о постоянных затратах отсутствуют',
     },
     'DE': {
         # Основные заголовки
@@ -509,6 +560,60 @@ TRANSLATIONS = {
         'upsell_pricing': 'Up-Sell und Preise',
         'retention_loyalty': 'Bindung und Loyalität',
         'ad_optimization': 'Werbungsoptimierung',
+
+        # НОВЫЕ ПЕРЕВОДЫ ИЗ 33 ПУНКТОВ
+        'total': 'GESAMT',
+        'reason': 'Grund',
+        'count': 'Anzahl',
+        'share_percent': 'Anteil %',
+        'one_deal': '1 Deal',
+        'two_three': '2-3',
+        'four_ten': '4-10',
+        'eleven_thirty': '11-30',
+        'thirty_one_hundred': '31-100',
+        'hundred_plus': '100+',
+        'group': 'Gruppe',
+        'cities': 'Städte',
+        'revenue_share': 'Umsatzanteil',
+        'revenue_per_city': 'Umsatz pro Stadt',
+        'cities_count': 'Städteanzahl',
+        'share': 'Anteil',
+        'b_buyers': 'B (Käufer)',
+        'ua_total_traffic': 'UA (Gesamtverkehr)',
+        'c1_conversion_table': 'C1 (Konversion)',
+        'hadi_cycle': 'HADI-Zyklus',
+        'stage': 'Stufe',
+        'formulation': 'Formulierung',
+        'parameter': 'Parameter',
+        'null_hypothesis': 'Nullhypothese',
+        'a_test_conditions': 'Bedingungen für A-Test',
+        'b_test_conditions': 'Bedingungen für B-Test',
+        'tracking_metric': 'Verfolgungsmetrik',
+        'hypothesis_confirmation_threshold': 'Hypothesenbestätigungsschwelle',
+        'significance_level': 'Signifikanzniveau',
+        'description': 'Beschreibung',
+        'base_c1': 'Basis C1',
+        'target_effect_mde': 'Zieleffekt (MDE)',
+        'leads_per_day_group': 'Leads/Tag (Gruppe)',
+        'days_for_test': 'Tage für Test',
+        'leads_per_group': 'Leads pro Gruppe',
+
+        # Дополнительные тексты (из больших блоков)
+        'tree_level_1': 'EBENE 1: TOP MANAGER',
+        'tree_level_2': 'EBENE 2: UNIT-ECONOMICS DES GESCHÄFTS',
+        'tree_level_3': 'EBENE 3: PRODUKTANALYSE',
+        'tree_level_4': 'EBENE 4: DETAILLIERTE STATISTIKEN NACH QUELLEN',
+        'tree_level_5': 'EBENE 5: ZUSÄTZLICHE KENNZAHLEN',
+        'tree_insights_title': 'ANALYSE-EINSICHTEN:',
+        'tree_formula_b': 'B = UA × C1 (Eindeutige Kunden = UA × Konversion)',
+        'tree_formula_revenue': 'Revenue = AOV × T (Umsatz = AOV pro Transaktion × Anzahl der Zahlungen)',
+        'tree_formula_t': 'T = B × APC (Anzahl der Zahlungen = Eindeutige Kunden × Wie oft zahlt ein Student im Durchschnitt)',
+        'tree_formula_cac': 'CAC = AC / B (Kosten pro Kunde = Gesamtes Marketingbudget / Eindeutige Kunden)',
+        'tree_formula_cltv': 'CLTV = (AOV - COGS) × APC (Gewinn pro zahlenden Kunden = (AOV pro Transaktion - Selbstkosten) × Wie oft zahlt ein Student im Durchschnitt)',
+        'tree_formula_ltv': 'LTV = CLTV × C1 (Gewinn pro Besucher = Gewinn pro zahlenden Kunden × Konversion)',
+        'tree_formula_cm': 'CM = Revenue - AC - COGS (Deckungsbeitrag = Umsatz - Marketingbudget - Selbstkosten)',
+        'tree_formula_romi': 'ROMI = CM / AC (Rentabilität der Werbung = Deckungsbeitrag / Marketingbudget)',
+        'tree_footer': 'Hinweis: Daten zu Fixkosten fehlen',
     }
 }
 
@@ -2580,18 +2685,18 @@ with tabs[1]:
             
             # Добавляем строку "ВСЕГО" ВНИЗУ
             pivot_table_with_total = pivot_table_sorted.copy()
-            pivot_table_with_total.loc['ВСЕГО'] = pivot_table_sorted.sum()
+            pivot_table_with_total.loc[t('total')] = pivot_table_sorted.sum()
             
             # Добавляем колонку "ВСЕГО" СПРАВА
-            pivot_table_with_total['ВСЕГО'] = pivot_table_with_total.sum(axis=1)
+            pivot_table_with_total[t('total')] = pivot_table_with_total.sum(axis=1)
             
             # Создаем стиль
             styled_table = pivot_table_with_total.style.format("{:.0f}")
             
             # 1. МЕНЕДЖЕРЫ: построчное окрашивание (кроме колонки "ВСЕГО")
-            reason_columns = [col for col in pivot_table_with_total.columns if col != 'ВСЕГО']
+            reason_columns = [col for col in pivot_table_with_total.columns if col != t('total')]
             for idx in pivot_table_with_total.index:
-                if idx != 'ВСЕГО':
+                if idx != t('total'):
                     styled_table = styled_table.background_gradient(
                         subset=pd.IndexSlice[idx, reason_columns],
                         cmap='YlOrBr', 
@@ -2601,7 +2706,7 @@ with tabs[1]:
             
             # 2. СТРОКА "ВСЕГО": горизонтальное окрашивание ВСЕЙ строки
             styled_table = styled_table.background_gradient(
-                subset=pd.IndexSlice['ВСЕГО', :],
+                subset=pd.IndexSlice[t('total'), :],
                 cmap='YlOrBr',
                 vmin=0,
                 axis=1
@@ -2609,7 +2714,7 @@ with tabs[1]:
             
             # 3. КОЛОНКА "ВСЕГО": вертикальное окрашивание (кроме строки "ВСЕГО")
             styled_table = styled_table.background_gradient(
-                subset=pd.IndexSlice[pivot_table_with_total.index.drop('ВСЕГО'), 'ВСЕГО'],
+                subset=pd.IndexSlice[pivot_table_with_total.index.drop(t('total')), t('total')],
                 cmap='Reds',
                 vmin=0,
                 axis=0
@@ -2618,7 +2723,7 @@ with tabs[1]:
             # 4. ЯЧЕЙКА ПЕРЕСЕЧЕНИЯ ('ВСЕГО', 'ВСЕГО'): убираем цвет
             styled_table = styled_table.map(
                 lambda val: 'background-color: transparent !important',
-                subset=pd.IndexSlice['ВСЕГО', 'ВСЕГО']
+                subset=pd.IndexSlice[t('total'), t('total')]
             )
             
             st.markdown(f"**{t('lost_reasons_distribution')}**")
@@ -2631,13 +2736,13 @@ with tabs[1]:
             # Общее распределение причин
             st.markdown(f"**{t('lost_reasons_total_distribution')}**")
             reason_total = lost_deals['Lost Reason'].value_counts().reset_index()
-            reason_total.columns = ['Причина', 'Кол-во']
-            reason_total['Доля %'] = (reason_total['Кол-во'] / len(lost_deals) * 100).round(1)
+            reason_total.columns = [t('reason'), t('count')]
+            reason_total[t('share_percent')] = (reason_total[t('count')] / len(lost_deals) * 100).round(1)
             
             st.dataframe(
                 reason_total.style\
-                    .background_gradient(subset=['Доля %'], cmap='YlOrBr')\
-                    .format({'Доля %': '{:.1f}%'}),
+                    .background_gradient(subset=[t('share_percent')], cmap='YlOrBr')\
+                    .format({t('share_percent'): '{:.1f}%'}),
                 use_container_width=True,
                 height=300
             )
@@ -3136,30 +3241,30 @@ with tabs[3]:
         city_groups = pd.cut(
             city_stats['Total_Deals'],
             bins=[0, 1, 3, 10, 30, 100, float('inf')],
-            labels=['1 сделка', '2-3', '4-10', '11-30', '31-100', '100+']
+            labels=[t('one_deal'), t('two_three'), t('four_ten'), t('eleven_thirty'), t('thirty_one_hundred'), t('hundred_plus')]
         )
         
         group_stats = pd.DataFrame({
-            'Группа': city_groups,
-            'Города': 1,
-            'Выручка': city_stats['Total_Revenue']
-        }).groupby('Группа', observed=False).agg({
-            'Города': 'count',
-            'Выручка': 'sum'
+            t('group'): city_groups,
+            t('cities'): 1,
+            t('revenue'): city_stats['Total_Revenue']
+        }).groupby(t('group'), observed=False).agg({
+            t('cities'): 'count',
+            t('revenue'): 'sum'
         })
         
         if len(group_stats) > 0:
-            group_stats['Доля выручки'] = (group_stats['Выручка'] / group_stats['Выручка'].sum() * 100).round(1)
-            group_stats['Выручка на город'] = (group_stats['Выручка'] / group_stats['Города'].replace(0, np.nan)).fillna(0).astype(int)
+            group_stats[t('revenue_share')] = (group_stats[t('revenue')] / group_stats[t('revenue')].sum() * 100).round(1)
+            group_stats[t('revenue_per_city')] = (group_stats[t('revenue')] / group_stats[t('cities')].replace(0, np.nan)).fillna(0).astype(int)
             
             fig_groups = px.bar(
                 group_stats.reset_index(),
-                x='Группа',
-                y='Города',
-                color='Доля выручки',
-                text='Города',
+                x=t('group'),
+                y=t('cities'),
+                color=t('revenue_share'),
+                text=t('cities'),
                 title=t('cities_distribution'),
-                labels={'Города': f'{t("cities")}'},
+                labels={t('cities'): f'{t("cities")}'},
                 color_continuous_scale='RdYlGn',
                 height=400
             )
@@ -3168,8 +3273,8 @@ with tabs[3]:
         
         # Ключевые метрики географии - отдельно под графиком
         source_leadership = city_stats['Top_Source'].value_counts().head(5).reset_index()
-        source_leadership.columns = ['Источник', 'Городов']
-        source_leadership['Доля'] = (source_leadership['Городов'] / len(city_stats) * 100).round(1)
+        source_leadership.columns = [t('source'), t('cities_count')]
+        source_leadership[t('share')] = (source_leadership[t('cities_count')] / len(city_stats) * 100).round(1)
         
         # Общее количество студентов по всем городам
         total_students_all_cities = city_stats['Active_Students'].sum()
@@ -3189,8 +3294,8 @@ with tabs[3]:
                 f"{len(city_stats[city_stats['Total_Deals'] >= 5])}",
                 f"{city_stats['Win_Rate'].mean():.1f}%",
                 f"{city_stats.head(3)['Total_Revenue'].sum() / city_stats['Total_Revenue'].sum() * 100:.1f}%",
-                f"{source_leadership.iloc[0]['Источник']}",
-                f"{source_leadership.iloc[0]['Городов']} ({source_leadership.iloc[0]['Доля']}%)",
+                f"{source_leadership.iloc[0][t('source')]}",
+                f"{source_leadership.iloc[0][t('cities_count')]} ({source_leadership.iloc[0][t('share')]}%)",
                 f"{(city_stats.head(3)['Active_Students'].sum() / total_students_all_cities * 100):.1f}%"
             ]
         }
@@ -3216,10 +3321,10 @@ with tabs[6]:
     st.subheader(t('metrics_tree'))
 
     st.markdown(f"""
-**УРОВЕНЬ 1: {t('top_managers')}**  
+**{t('tree_level_1')}**  
 └── **{t('margin')} (CM)** — Revenue - AC - COGS
 
-**УРОВЕНЬ 2: {t('unit_economics_business')}**  
+**{t('tree_level_2')}**  
 ├── **UA (User Acquisition)** — {t('ua_desc')} → COUNTUNIQUE(CONTACTS['Id'])  
 ├── **C1 ({t('conversion')} Rate)** — {t('c1_desc')} → B / UA  
 ├── **CPA (Cost Per Acquisition)** — {t('cpa_desc')} → AC / UA  
@@ -3233,7 +3338,7 @@ with tabs[6]:
 ├── **{t('revenue')} (Revenue)** — {t('revenue')} → SUM(DEALS['revenue'])  
 └── **ROMI (Return on Marketing)** — {t('romi_desc')} → CM / AC
 
-**УРОВЕНЬ 3: {t('product_analysis')}**  
+**{t('tree_level_3')}**  
 ├── **B (Buyers)** — {t('b_desc')}  
 ├── **AC (Advertising Cost)** — {t('ac_desc')} → SUM(SPEND['Spend'])  
 ├── **CAC (Customer Acquisition Cost)** — {t('cac_desc')} → AC / B  
@@ -3241,7 +3346,7 @@ with tabs[6]:
 ├── **LTV (Lifetime Value)** — {t('ltv_desc')} → CLTV × C1  
 └── **T (Transactions)** — {t('t_desc')} → SUM(DEALS['Transactions'])
 
-**УРОВЕНЬ 4: {t('detailed_source_stats')}**  
+**{t('tree_level_4')}**  
 ├── DEALS['Created Time'] — {t('month')} {t('leads')}  
 ├── DEALS['Closing Date'] — {t('month')} {t('sales')}  
 ├── DEALS['Source'] / SPEND['Source'] — {t('source')}  
@@ -3253,7 +3358,7 @@ with tabs[6]:
 ├── SPEND['Clicks'] — {t('clicks')}  
 └── SPEND['Impressions'] — {t('impressions')}
 
-**УРОВЕНЬ 5: {t('additional_metrics')}**  
+**{t('tree_level_5')}**  
 ├── DEALS['SLA'] — {t('avg_speed')} {t('conversion')}  
 ├── DEALS['Level of Deutsch'] — {t('level')}  
 ├── DEALS['Course duration'] — {t('deal_closing_speed')}  
@@ -3263,17 +3368,17 @@ with tabs[6]:
 ├── SPEND['AdGroup'] — {t('source')} {t('group')}  
 └── SPEND['Ad'] — {t('source')}
 
-**{t('growth_insights')}**  
-- **B = UA × C1** ({t('unique_clients')} = {t('ua')} × {t('conversion')})  
-- **Revenue = AOV × T** ({t('revenue')} = {t('aov_per_transaction')} × {t('t_desc')})  
-- **T = B × APC** ({t('t_desc')} = {t('unique_clients')} × {t('apc_desc')})  
-- **CAC = AC / B** ({t('cac_desc')} = {t('ac_desc')} / {t('unique_clients')})  
-- **CLTV = (AOV - COGS) × APC** ({t('cltv_desc')} = ({t('aov_per_transaction')} - {t('cogs_desc')}) × {t('apc_desc')})  
-- **LTV = CLTV × C1** ({t('ltv_desc')} = {t('cltv_desc')} × {t('c1_desc')})  
-- **CM = Revenue - AC - COGS** ({t('cm_desc')} = {t('revenue')} - {t('ac_desc')} - {t('cogs_desc')})  
-- **ROMI = CM / AC** ({t('romi_desc')} = {t('cm_desc')} / {t('ac_desc')})  
+**{t('tree_insights_title')}**  
+- **{t('tree_formula_b')}**  
+- **{t('tree_formula_revenue')}**  
+- **{t('tree_formula_t')}**  
+- **{t('tree_formula_cac')}**  
+- **{t('tree_formula_cltv')}**  
+- **{t('tree_formula_ltv')}**  
+- **{t('tree_formula_cm')}**  
+- **{t('tree_formula_romi')}**  
 
-*{t('no_data')} о постоянных затратах*
+*{t('tree_footer')}*
 """)
     
     # 2. HADI-ЦИКЛЫ И A/B ТЕСТЫ
@@ -3294,9 +3399,9 @@ with tabs[6]:
     
     product_stats = pd.DataFrame({
         t('product'): buyers_per_product.index,
-        "B (Покупатели)": buyers_per_product.values,
-        "UA (Общий трафик)": TOTAL_UA,
-        "C1 (Конверсия)": c1_per_product.values
+        t('b_buyers'): buyers_per_product.values,
+        t('ua_total_traffic'): TOTAL_UA,
+        t('c1_conversion_table'): c1_per_product.values
     })
     product_stats = product_stats[product_stats[t('product')].isin(main_products)]
     
@@ -3304,9 +3409,9 @@ with tabs[6]:
         st.write(f"**{t('basic_metrics_ab_tests')}**")
         st.dataframe(
             product_stats.style.format({
-                'B (Покупатели)': '{:,.0f}',
-                'UA (Общий трафик)': '{:,.0f}',
-                'C1 (Конверсия)': '{:.2%}'
+                t('b_buyers'): '{:,.0f}',
+                t('ua_total_traffic'): '{:,.0f}',
+                t('c1_conversion_table'): '{:.2%}'
             }),
             use_container_width=True
         )
@@ -3323,11 +3428,11 @@ with tabs[6]:
         for hyp_name, hyp_text in hypotheses:
             with st.expander(f"{hyp_name}"):
                 st.write(f"**{t('hypothesis')}:** {hyp_text}")
-                st.write(f"**HADI-цикл:**")
+                st.write(f"**{t('hadi_cycle')}:**")
                 
                 hadi_df = pd.DataFrame({
-                    "Этап": ["Hypothesis (H)", "Action (A)", "Data (D)", "Insight (I)"],
-                    "Формулировка": [
+                    t('stage'): ["Hypothesis (H)", "Action (A)", "Data (D)", "Insight (I)"],
+                    t('formulation'): [
                         f"{hyp_text}. {t('growth_insights')} {t('conversion')} на 10%.",
                         f"{t('action')} согласно {t('hypothesis')} для тестовой группы (50%). Контрольная группа — текущий процесс.",
                         f"Срок теста — 2 недели. Сравниваются две группы лидов. Метрика — {t('conversion')} (C1). Цель — прирост ≥ 10%.",
@@ -3338,16 +3443,16 @@ with tabs[6]:
                 st.table(hadi_df)
                 
                 abtest_df = pd.DataFrame({
-                    "Параметр": [
+                    t('parameter'): [
                         t('hypothesis'),
-                        "Нулевая гипотеза",
-                        "Условия проведения A-теста",
-                        "Условия проведения B-теста",
-                        "Метрика для отслеживания",
-                        "Граница подтверждения гипотезы",
-                        "Уровень значимости"
+                        t('null_hypothesis'),
+                        t('a_test_conditions'),
+                        t('b_test_conditions'),
+                        t('tracking_metric'),
+                        t('hypothesis_confirmation_threshold'),
+                        t('significance_level')
                     ],
-                    "Описание": [
+                    t('description'): [
                         f"{hyp_text} увеличит {t('conversion')} (C1) на 10%.",
                         f"Нет различий: C1_B ≤ C1_A.",
                         f"Группа A — текущий процесс. Случайное распределение 50% новых лидов. Длительность: 14 дней.",
@@ -3401,7 +3506,7 @@ with tabs[6]:
         
         for _, row in product_stats.iterrows():
             product_name = row[t('product')]
-            p = row["C1 (Конверсия)"]
+            p = row[t('c1_conversion_table')]
             
             for mde in MDE_LIST:
                 n_required = required_sample(p, mde)
@@ -3411,11 +3516,11 @@ with tabs[6]:
                     results.append({
                         t('product'): product_name,
                         t('hypothesis'): hyp_name,
-                        "Базовый C1": f"{p:.2%}",
-                        "Целевой эффект (MDE)": f"{mde*100:.0f}%",
-                        "Лидов на группу": int(np.ceil(n_required)),
-                        "Лидов/день (группа)": f"{DAILY_LEADS_PER_GROUP:.1f}",
-                        "Дней для теста": days_needed
+                        t('base_c1'): f"{p:.2%}",
+                        t('target_effect_mde'): f"{mde*100:.0f}%",
+                        t('leads_per_group'): int(np.ceil(n_required)),
+                        t('leads_per_day_group'): f"{DAILY_LEADS_PER_GROUP:.1f}",
+                        t('days_for_test'): days_needed
                     })
         
         results_df = pd.DataFrame(results)
@@ -3436,12 +3541,12 @@ with tabs[6]:
         # Отображение таблицы
         st.markdown(f"**{t('avg_speed')} приток лидов в день (на одну группу):** {DAILY_LEADS_PER_GROUP:.1f}")
         
-        styled_df = results_df.style.applymap(highlight_days, subset=["Дней для теста"])
+        styled_df = results_df.style.applymap(highlight_days, subset=[t('days_for_test')])
         
         st.dataframe(
             styled_df.format({
-                "Лидов на группу": "{:,.0f}",
-                "Дней для теста": "{:,.0f}"
+                t('leads_per_group'): "{:,.0f}",
+                t('days_for_test'): "{:,.0f}"
             }),
             use_container_width=True,
             height=400
@@ -3454,8 +3559,6 @@ with tabs[6]:
         🟧 **15-30 дней** — {t('extended_test_needed')}  
         🟥 **>30 дней** — {t('hypothesis_testing_difficult')}  
         """)
-    else:
-        st.info(t('insufficient_data'))
 
 # ---------- ФУТЕР ----------
 st.markdown(
