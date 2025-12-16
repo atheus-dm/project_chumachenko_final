@@ -131,7 +131,7 @@ TRANSLATIONS = {
         'revenue_by_products_ltv': 'Выручка по продуктам (Цвет = LTV)',
         'products_matrix_clients_vs_check': 'Матрица продуктов: Клиенты vs Средний чек',
         'payment_type_analysis': 'АНАЛИЗ ТИПОВ ОПЛАТЫ',
-        'payment_distribution': 'Распределение типов оплаты по продуктам',
+        'payment_distribution': 'Распределение типов оплата по продуктам',
         'education_type_analysis': 'АНАЛИЗ ТИПОВ ОБУЧЕНИЯ',
         'revenue_by_education_type': 'Выручка по типам обучения (Цвет = Средний чек)',
         
@@ -152,8 +152,6 @@ TRANSLATIONS = {
         'geography_summary': 'СВОДНАЯ СТАТИСТИКА ПО ГЕОГРАФИИ',
         'cities_distribution': 'Распределение городов по объему сделок',
         'key_geography_metrics': 'Ключевые метрики географии:',
-        'sales_increased_for_clarity': 'Продажи увеличены для наглядности',
-        'speed_of_response_hours': 'Скорость ответа (часы)',
         
         # Дерево метрик и A/B тесты
         'methodology_ab_testing': 'МЕТОДОЛОГИЯ И A/B ТЕСТИРОВАНИЕ',
@@ -177,7 +175,7 @@ TRANSLATIONS = {
         'month': 'Месяц',
         'leads': 'Лиды',
         'sales': 'Продажи',
-        'calls': 'Дозвоны',
+        'calls': 'Звонки',
         'students': 'Студенты',
         'conversion': 'Конверсия',
         'revenue': 'Выручка',
@@ -276,6 +274,7 @@ TRANSLATIONS = {
         'thirty_one_hundred': '31-100',
         'hundred_plus': '100+',
         'group': 'Группа',
+        'cities': 'Города',
         'revenue_share': 'Доля выручки',
         'revenue_per_city': 'Выручка на город',
         'cities_count': 'Городов',
@@ -316,31 +315,6 @@ TRANSLATIONS = {
         'tree_formula_cm': 'CM = Revenue - AC - COGS (Маржинальный вклад = Выручка - Маркетинг бюджет - Себестоимость)',
         'tree_formula_romi': 'ROMI = CM / AC (Окупаемость рекламы = Маржинальный вклад / Маркетинг бюджет)',
         'tree_footer': 'Примечание: данные о постоянных затратах отсутствуют',
-        
-        # Новые тексты из кода
-        'metric': 'Метрика',
-        'value': 'Значение',
-        'min': 'Минимум',
-        'max': 'Максимум',
-        'hours': 'часы',
-        'minutes': 'минуты',
-        'deals_faster_25': '25% сделок быстрее',
-        'deals_faster_75': '75% сделок быстрее',
-        'avg_response_time': 'Средняя скорость ответа',
-        'median_response_time': 'Медианная скорость ответа',
-        'quality': 'Качество',
-        'total_active': 'Всего активных',
-        'percentage': 'Процент',
-        'collection_ratio': 'Коэффициент сбора',
-        'avg_contract': 'Средний контракт',
-        'total_contract': 'Всего контрактов',
-        'avg_initial': 'Средний первоначальный',
-        'type': 'Тип',
-        'status': 'Статус',
-        'sales_multiplied': 'Продажи увеличены для наглядности',
-        'calls_to_sales': 'Звонки до продажи',
-        'conversion_week_percent': 'Конверсия недели (%)',
-        'deal_closing_speed_days': 'Скорость закрытия сделок (дни)',
     },
     'DE': {
         # Основные заголовки
@@ -477,8 +451,6 @@ TRANSLATIONS = {
         'geography_summary': 'ZUSAMMENFASSENDE GEOGRAFIE-STATISTIKEN',
         'cities_distribution': 'Verteilung der Städte nach Deal-Volumen',
         'key_geography_metrics': 'Wichtige Geografie-Kennzahlen:',
-        'sales_increased_for_clarity': 'Verkäufe für bessere Sichtbarkeit erhöht',
-        'speed_of_response_hours': 'Antwortzeit (Stunden)',
         
         # Дерево метрик и A/B тесты
         'methodology_ab_testing': 'METHODIK UND A/B TESTING',
@@ -601,6 +573,7 @@ TRANSLATIONS = {
         'thirty_one_hundred': '31-100',
         'hundred_plus': '100+',
         'group': 'Gruppe',
+        'cities': 'Städte',
         'revenue_share': 'Umsatzanteil',
         'revenue_per_city': 'Umsatz pro Stadt',
         'cities_count': 'Städteanzahl',
@@ -641,31 +614,6 @@ TRANSLATIONS = {
         'tree_formula_cm': 'CM = Revenue - AC - COGS (Deckungsbeitrag = Umsatz - Marketingbudget - Selbstkosten)',
         'tree_formula_romi': 'ROMI = CM / AC (Rentabilität der Werbung = Deckungsbeitrag / Marketingbudget)',
         'tree_footer': 'Hinweis: Daten zu Fixkosten fehlen',
-        
-        # Новые тексты из кода
-        'metric': 'Kennzahl',
-        'value': 'Wert',
-        'min': 'Minimum',
-        'max': 'Maximum',
-        'hours': 'Stunden',
-        'minutes': 'Minuten',
-        'deals_faster_25': '25% Deals schneller',
-        'deals_faster_75': '75% Deals schneller',
-        'avg_response_time': 'Durchschnittliche Antwortzeit',
-        'median_response_time': 'Median-Antwortzeit',
-        'quality': 'Qualität',
-        'total_active': 'Gesamt aktiv',
-        'percentage': 'Prozentsatz',
-        'collection_ratio': 'Einzugsquote',
-        'avg_contract': 'Durchschnittlicher Vertrag',
-        'total_contract': 'Gesamtverträge',
-        'avg_initial': 'Durchschnittlich initial',
-        'type': 'Typ',
-        'status': 'Status',
-        'sales_multiplied': 'Verkäufe für bessere Sichtbarkeit erhöht',
-        'calls_to_sales': 'Anrufe bis zum Verkauf',
-        'conversion_week_percent': 'Konversion Woche (%)',
-        'deal_closing_speed_days': 'Abschlussgeschwindigkeit (Tage)',
     }
 }
 
@@ -757,6 +705,8 @@ def load_data():
     for col in td_cols:
         # Создаем числовую версию в секундах для анализа
         deals[f'{col}_seconds'] = deals[col].dt.total_seconds()
+        # Оригинальную колонку оставляем как есть (timedelta)
+        # Её Streamlit может сконвертировать в строку, но у нас есть backup в секундах
     
     return deals, spend, contacts, calls
 
@@ -1095,6 +1045,10 @@ def calculate_growth_points():
     COGS_PERCENT_FROM_CHECK = 0.0
     AC_SCALING_FACTOR = 0.8
     
+    # Коэффициенты сложности
+    DIFFICULTY_FACTORS = {'UA': 0.2, 'C1': 0.4, 'AOV': 0.6, 'APC': 0.5, 'CPA': 0.3}
+    REALISM_WEIGHTS = {k: 1 - v for k, v in DIFFICULTY_FACTORS.items()}
+    
     ACTION_INSIGHTS = {
         'UA': t('channel_scaling'),
         'C1': t('funnel_optimization'), 
@@ -1138,7 +1092,8 @@ def calculate_growth_points():
             'Scenario': scenario_name, 'Scenario_Type': scenario_type, 'Growth_Pct': growth_pct,
             'Product': product_name, 'UA': ua, 'C1': c1, 'B': b, 'AOV': aov, 'APC': apc, 
             'T': t, 'Revenue': revenue, 'AC': ac, 'CLTV': cltv, 'LTV': ltv, 
-            'CPA': cpa, 'CAC': cac, 'CM': cm, 'ROMI': romi
+            'CPA': cpa, 'CAC': cac, 'CM': cm, 'ROMI': romi,
+            'Realism_Weight': REALISM_WEIGHTS.get(scenario_type, 0.5)
         }
     
     def generate_scenarios_for_row(row, product_name):
@@ -2031,7 +1986,7 @@ with tabs[1]:
     fig_trend.data[2].hovertemplate = f"{t('week')}: %{{x}}<br>{t('calls')}: %{{y:.0f}}<extra></extra>"
 
     fig_trend.update_layout(
-        title_text=f"<b>{t('leads_calls_sales_dynamics')}</b><br><span style='font-size:12px'>{t('sales_increased_for_clarity')}</span>",
+        title_text=f"<b>{t('leads_calls_sales_dynamics')}</b><br><span style='font-size:12px'>{t('sales')} увеличены для наглядности</span>",
         hovermode="x unified",
         height=450
     )
@@ -2051,7 +2006,7 @@ with tabs[1]:
             'Calls_Count': f'{t("calls")}',
             'Success_Count': f'{t("sales")}',
             'Leads_Count': f'{t("leads")}',
-            'Conversion_Rate': f'{t("conversion_week_percent")}'
+            'Conversion_Rate': f'{t("conversion")} {t("week")} (%)'
         },
         color_continuous_scale='Viridis',
         height=400
@@ -2121,7 +2076,7 @@ with tabs[1]:
     fig_calls_dist = px.histogram(
         calls_for_histogram, 
         x='Calls_Count',
-        title=f'{t("calls_distribution")} ({t("calls_to_sales")})',
+        title=f'{t("calls_distribution")} (показано {len(calls_for_histogram)} из {total_deals} сделок, до {int(percentile_95)} звонков)',
         labels={'Calls_Count': f'{t("calls")}', 'count': f'{t("total_deals")}'},
         text_auto=True,
         color_discrete_sequence=['#FFA15A'],
@@ -2202,7 +2157,7 @@ with tabs[1]:
         )
         
         # Настройки осей
-        fig.update_xaxes(range=[-1, 120], title_text=f'{t("deal_closing_speed_days")}')
+        fig.update_xaxes(range=[-1, 120], title_text=f'{t("deal_closing_speed")} ({t("days")})')
         fig.update_layout(
             yaxis_title=f'{t("total_deals")}', 
             showlegend=False, 
@@ -2602,14 +2557,14 @@ with tabs[1]:
                 color='Win_Rate_Pct',
                 hover_name='Manager',
                 title=t('sla_vs_conversion'),
-                labels={'Median_SLA_Hours': f'{t("speed_of_response_hours")}', 'Win_Rate_Pct': f'{t("conversion")} (%)'},
+                labels={'Median_SLA_Hours': f'{t("median_speed")} {t("conversion")} ({t("hours")})', 'Win_Rate_Pct': f'{t("conversion")} (%)'},
                 color_continuous_scale='RdYlGn',
                 height=600
             )
             
             avg_sla = manager_sla_stats['Median_SLA_Hours'].median()
             avg_win = manager_sla_stats['Win_Rate_Pct'].median()
-            fig5.add_vline(x=avg_sla, line_dash="dash", line_color="gray", annotation_text=f"{t('avg_response_time')}")
+            fig5.add_vline(x=avg_sla, line_dash="dash", line_color="gray", annotation_text=f"{t('avg_speed')} SLA")
             fig5.add_hline(y=avg_win, line_dash="dash", line_color="gray", annotation_text=f"{t('avg_speed')} {t('conversion')}")
             st.plotly_chart(fig5, use_container_width=True)
             
@@ -2633,16 +2588,16 @@ with tabs[1]:
         manager_table = manager_table.sort_values('Median_SLA_Hours', ascending=True)
         
         display_df = manager_table[['Manager', 'Deals_Count', 'Median_SLA_Hours', 'Mean_SLA_Hours', 'Win_Rate_Pct']]
-        display_df.columns = [t('manager'), t('total_deals'), t('median_response_time'), t('avg_response_time'), f'{t("conversion")} %']
+        display_df.columns = [t('manager'), t('total_deals'), t('median_speed'), t('avg_speed'), f'{t("conversion")} %']
         
         st.dataframe(
             display_df.style\
-                .background_gradient(subset=[t('median_response_time')], cmap='RdYlGn_r')\
-                .background_gradient(subset=[t('avg_response_time')], cmap='RdYlGn_r')\
+                .background_gradient(subset=[t('median_speed')], cmap='RdYlGn_r')\
+                .background_gradient(subset=[t('avg_speed')], cmap='RdYlGn_r')\
                 .background_gradient(subset=[f'{t("conversion")} %'], cmap='RdYlGn')\
                 .format({
-                    t('median_response_time'): '{:.1f} {t("hours")}',
-                    t('avg_response_time'): '{:.1f} {t("hours")}',
+                    t('median_speed'): '{:.1f} ч',
+                    t('avg_speed'): '{:.1f} ч',
                     f'{t("conversion")} %': '{:.1f}%'
                 }),
             use_container_width=True,
@@ -2661,7 +2616,7 @@ with tabs[1]:
                 'stage_normalized': lambda x: (x == 'Active Student').mean() * 100
             }).reset_index()
             conversion_by_speed['Time_Label'] = conversion_by_speed['SLA_Minutes'].apply(
-                lambda m: f"{m/60:.1f} {t('hours')}" if m >= 60 else f"{m:.0f} {t('minutes')}"
+                lambda m: f"{m/60:.1f} ч" if m >= 60 else f"{m:.0f} мин"
             )
             conversion_by_speed.columns = ['Decile', 'SLA_Minutes', 'Win_Rate_Pct', 'Time_Label']
             
@@ -2672,17 +2627,17 @@ with tabs[1]:
                     y='Win_Rate_Pct',
                     markers=True,
                     text='Time_Label',
-                    title=f'{t("conversion")} vs {t("avg_response_time")}',
-                    labels={'SLA_Minutes': f'{t("avg_response_time")} ({t("minutes")})', 'Win_Rate_Pct': f'{t("conversion")} (%)'},
+                    title=f'{t("conversion")} vs {t("avg_speed")} {t("conversion")}',
+                    labels={'SLA_Minutes': f'{t("avg_speed")} {t("conversion")} (мин)', 'Win_Rate_Pct': f'{t("conversion")} (%)'},
                     height=400
                 )
                 fig6.update_traces(textposition="top center")
                 st.plotly_chart(fig6, use_container_width=True)
                 
                 def format_time(minutes):
-                    if minutes < 60: return f"{minutes:.1f} {t('minutes')}"
-                    if minutes < 1440: return f"{minutes/60:.1f} {t('hours')}"
-                    return f"{minutes/1440:.1f} {t('days')}"
+                    if minutes < 60: return f"{minutes:.1f} мин"
+                    if minutes < 1440: return f"{minutes/60:.1f} ч"
+                    return f"{minutes/1440:.1f} дн"
                 
                 mean_sla = sla_clean['SLA_Minutes'].mean()
                 median_sla = sla_clean['SLA_Minutes'].median()
@@ -2690,7 +2645,7 @@ with tabs[1]:
                 q75 = sla_clean['SLA_Minutes'].quantile(0.75)
                 
                 metrics_df = pd.DataFrame({
-                    t('metric'): [t('avg_response_time'), t('median_response_time'), t('deals_faster_25'), t('deals_faster_75')],
+                    t('metric'): [f'{t("avg_speed")} {t("avg_speed")}', f'{t("median_speed")} {t("avg_speed")}', '25% сделок быстрее', '75% сделок быстрее'],
                     t('value'): [format_time(mean_sla), format_time(median_sla), format_time(q25), format_time(q75)]
                 })
                 
@@ -3326,13 +3281,13 @@ with tabs[3]:
         
         geo_summary_data = {
             t('metric'): [
-                f'{t("cities")} с данными',
+                f'Всего {t("cities")} с данными',
                 f'{t("cities")} с ≥5 сделками',
                 f'{t("avg_speed")} {t("win_rate")} по {t("cities")}',
-                f'{t("revenue_share")} топ-3 {t("cities")}',
+                f'Доля {t("revenue")} топ-3 {t("cities")}',
                 f'Самый частый {t("source")}',
                 f'{t("cities")} с этим {t("source")}',
-                f'{t("share")} {t("students")} топ-3 {t("cities")}'
+                f'Доля {t("students")} топ-3 {t("cities")}'
             ],
             t('value'): [
                 f"{len(city_stats)}",
@@ -3404,7 +3359,7 @@ with tabs[6]:
 └── SPEND['Impressions'] — {t('impressions')}
 
 **{t('tree_level_5')}**  
-├── DEALS['SLA'] — {t('avg_response_time')}  
+├── DEALS['SLA'] — {t('avg_speed')} {t('conversion')}  
 ├── DEALS['Level of Deutsch'] — {t('level')}  
 ├── DEALS['Course duration'] — {t('deal_closing_speed')}  
 ├── CALLS['Call Duration (in seconds)'] — {t('calls')} {t('avg_speed')}  
@@ -3502,7 +3457,7 @@ with tabs[6]:
                         f"Нет различий: C1_B ≤ C1_A.",
                         f"Группа A — текущий процесс. Случайное распределение 50% новых лидов. Длительность: 14 дней.",
                         f"Группа B — {hyp_text}. Случайное распределение 50% новых лидов. Длительность: 14 дней.",
-                        f"Основная: C1 ({t('sales')} / {t('leads')}). Дополнительные: TTFC, {t('calls')}, CPA.",
+                        f"Основная: C1 ({t('sales')} / {t('leads')}). Дополнительные: TTFC, дозвоны, CPA.",
                         f"C1_B ≥ C1_A × 1.10 и различие статистически значимо.",
                         "α = 0.05"
                     ]
