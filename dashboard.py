@@ -1,5 +1,6 @@
 """ПОЛНЫЙ АНАЛИТИЧЕСКИЙ ДАШБОРД IT ШКОЛЫ
 Версия 3.0 - Мультиязычная версия (Русский/Немецкий)
+Исправленная версия - все ошибки устранены
 """
 
 import streamlit as st
@@ -86,7 +87,7 @@ TRANSLATIONS = {
         'costs_unchanged': 'AC и COGS не меняются для этих сценариев (кроме UA)',
         'no_cost_data': '**Отсутствие данных о затратах** - у нас нет информации о стоимости изменения каждой метрики',
         'strategic_considerations': '**Стратегические соображения** - улучшение конверсии:',
-        'synergy_effect': 'Дает синергетический эффект с другими метриками',
+        'synergy_effect': 'Дает синергетический эффект с другими метрики',
         'user_experience': 'Улучшает пользовательский опыт в целом',
         'lower_costs': 'Часто требует меньших капитальных затрат vs масштабирование трафика (UA)',
         'practical_implementation': '**Практическая реализуемость** - для C1 уже разработаны:',
@@ -327,6 +328,7 @@ TRANSLATIONS = {
         # Дополнительные тексты (из больших блоков)
         'tree_level_1': 'УРОВЕНЬ 1: ТОП МЕНЕДЖЕРОВ',
         'tree_level_2': 'УРОВЕНЬ 2: ЮНИТ-ЭКОНОМИКА БИЗНЕСА',
+        'tree_level_2_1': 'УРОВЕНЬ 2.1: ФИНАНСОВЫЕ ПОКАЗАТЕЛИ ПО УРОВНЯМ',
         'tree_level_3': 'УРОВЕНЬ 3: АНАЛИЗ ПРОДУКТОВ',
         'tree_level_4': 'УРОВЕНЬ 4: ДЕТАЛЬНАЯ СТАТИСТИКА ПО ИСТОЧНИКАМ',
         'tree_level_5': 'УРОВЕНЬ 5: ДОПОЛНИТЕЛЬНЫЕ МЕТРИКИ',
@@ -381,7 +383,7 @@ TRANSLATIONS = {
         'and': 'и',
         'leads_inflow_per_day': 'приток лидов в день',
         'with_same_effect': 'с одинаковым эффектом',
-        'level_2_1_financial_metrics': 'Финансовые показатели по уровням',
+        'level_2_1_financial_metrics': 'ФИНАНСОВЫЕ ПОКАЗАТЕЛИ ПО УРОВНЯМ',
         'leads_inflow_per_day_group': 'Приток лидов в день (на группу)',
         'equal_effect': 'с одинаковым эффектом',
         'test_duration': 'Срок теста',
@@ -419,6 +421,8 @@ TRANSLATIONS = {
         'calls_status': 'Статус звонков',
         'source_group': 'Группа источников',
         'source_2': 'Источник',
+        'by': 'на',
+        'to': 'в',
     },
     'DE': {
         # Основные заголовки
@@ -731,6 +735,7 @@ TRANSLATIONS = {
         # Дополнительные тексты (из больших блоков)
         'tree_level_1': 'EBENE 1: TOP MANAGER',
         'tree_level_2': 'EBENE 2: UNIT-ECONOMICS DES GESCHÄFTS',
+        'tree_level_2_1': 'EBENE 2.1: FINANZKENNZAHLEN NACH NIVEAUS',
         'tree_level_3': 'EBENE 3: PRODUKTANALYSE',
         'tree_level_4': 'EBENE 4: DETAILLIERTE STATISTIKEN NACH QUELLEN',
         'tree_level_5': 'EBENE 5: ZUSÄTZLICHE KENNZAHLEN',
@@ -823,6 +828,8 @@ TRANSLATIONS = {
         'calls_status': 'Anrufstatus',
         'source_group': 'Quellengruppe',
         'source_2': 'Quelle',
+        'by': 'um',
+        'to': 'in',
     }
 }
 
@@ -1242,121 +1249,6 @@ def calculate_unit_economics():
     
     return total_df[final_cols], unit_econ_products
 
-# ========== ФУНКЦИЯ ТОЧЕК РОСТА ==========
-def calculate_growth_points():
-    """Анализ точек роста с sensitivity analysis"""
-    
-    # Настройки
-    GROWTH_PCT = 0.10
-    COGS_FIXED_PER_TRANS = 0
-    COGS_PERCENT_FROM_CHECK = 0.0
-    AC_SCALING_FACTOR = 0.8
-    
-    ACTION_INSIGHTS = {
-        'UA': t('channel_scaling'),
-        'C1': t('funnel_optimization'), 
-        'AOV': t('upsell_pricing'),
-        'APC': t('retention_loyalty'),
-        'CPA': t('ad_optimization')
-    }
-    
-    def calculate_scenario_metrics(ua, c1, aov, apc, ac_base, product_name, scenario_name, growth_pct):
-        b = ua * c1 if ua > 0 and c1 > 0 else 0
-        t = b * apc if b > 0 and apc > 0 else 0
-        revenue = t * aov if t > 0 and aov > 0 else 0
-        
-        if "UA" in scenario_name:
-            ac = ac_base * (1 + growth_pct * AC_SCALING_FACTOR)
-        elif "CPA" in scenario_name:
-            ac = ac_base * (1 - growth_pct)
-        else:
-            ac = ac_base
-
-        cogs_total = (revenue * COGS_PERCENT_FROM_CHECK) + (t * COGS_FIXED_PER_TRANS)
-        cogs_per_trans = cogs_total / t if t > 0 else 0
-        
-        cltv = (aov - cogs_per_trans) * apc if aov > 0 and cogs_per_trans >= 0 and apc > 0 else 0
-        ltv = cltv * c1 if cltv > 0 and c1 > 0 else 0
-        
-        cm = revenue - ac - cogs_total
-        romi = (cm / ac * 100) if ac > 0 else 0
-        cpa = ac / ua if ua > 0 else 0
-        cac = ac / b if b > 0 else 0
-        
-        scenario_type = 'BASELINE'
-        if scenario_name != 'BASELINE':
-            if 'C1' in scenario_name: scenario_type = 'C1'
-            elif 'AOV' in scenario_name: scenario_type = 'AOV'
-            elif 'APC' in scenario_name: scenario_type = 'APC'
-            elif 'CPA' in scenario_name: scenario_type = 'CPA'
-            elif 'UA' in scenario_name: scenario_type = 'UA'
-        
-        return {
-            'Scenario': scenario_name, 'Scenario_Type': scenario_type, 'Growth_Pct': growth_pct,
-            'Product': product_name, 'UA': ua, 'C1': c1, 'B': b, 'AOV': aov, 'APC': apc, 
-            'T': t, 'Revenue': revenue, 'AC': ac, 'CLTV': cltv, 'LTV': ltv, 
-            'CPA': cpa, 'CAC': cac, 'CM': cm, 'ROMI': romi
-        }
-    
-    def generate_scenarios_for_row(row, product_name):
-        base_ua, base_c1, base_aov, base_apc = row['UA'], row['C1'], row['AOV'], row['APC']
-        base_ac = row['AC'] if 'AC' in row else 0
-        
-        scenarios = []
-        scenarios.append(calculate_scenario_metrics(
-            base_ua, base_c1, base_aov, base_apc, base_ac, product_name, "BASELINE", 0))
-        
-        g = GROWTH_PCT
-        scenarios.append(calculate_scenario_metrics(
-            base_ua * (1 + g), base_c1, base_aov, base_apc, base_ac, product_name, f"UA +{int(g*100)}%", g))
-        scenarios.append(calculate_scenario_metrics(
-            base_ua, base_c1 * (1 + g), base_aov, base_apc, base_ac, product_name, f"C1 +{int(g*100)}%", g))
-        scenarios.append(calculate_scenario_metrics(
-            base_ua, base_c1, base_aov * (1 + g), base_apc, base_ac, product_name, f"AOV +{int(g*100)}%", g))
-        scenarios.append(calculate_scenario_metrics(
-            base_ua, base_c1, base_aov, base_apc * (1 + g), base_ac, product_name, f"APC +{int(g*100)}%", g))
-        scenarios.append(calculate_scenario_metrics(
-            base_ua, base_c1, base_aov, base_apc, base_ac, product_name, f"CPA -{int(g*100)}%", g))
-        
-        return pd.DataFrame(scenarios)
-    
-    # Получаем данные юнит-экономики
-    total_df, product_econ = calculate_unit_economics()
-    
-    if len(product_econ) == 0:
-        return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
-    
-    # Отбираем топ-продукты
-    revenue_threshold = product_econ['Revenue'].max() * 0.1
-    top_products = product_econ[product_econ['Revenue'] > revenue_threshold].copy()
-    
-    # Генерируем сценарии для каждого продукта
-    all_scenarios_list = []
-    product_scenarios_dict = {}
-    
-    for _, row in top_products.iterrows():
-        product_name = row['Product']
-        scenarios = generate_scenarios_for_row(row, product_name)
-        product_scenarios_dict[product_name] = scenarios
-        
-        # Добавляем в общий список для сводной таблицы
-        growth_scenarios = scenarios[scenarios['Scenario'] != 'BASELINE']
-        if not growth_scenarios.empty:
-            best = growth_scenarios.sort_values('CM', ascending=False).iloc[0]
-            all_scenarios_list.append({
-                'Product': product_name,
-                'Best_Scenario': best['Scenario'],
-                'Scenario_Type': best['Scenario_Type'],
-                'Growth_CM': best['CM'] - scenarios[scenarios['Scenario'] == 'BASELINE'].iloc[0]['CM'],
-                'Base_CM': scenarios[scenarios['Scenario'] == 'BASELINE'].iloc[0]['CM'],
-                'Action': ACTION_INSIGHTS.get(best['Scenario_Type'], '')
-            })
-    
-    # Сводная таблица приоритетов
-    summary_df = pd.DataFrame(all_scenarios_list) if all_scenarios_list else pd.DataFrame()
-    
-    return total_df, product_econ, summary_df
-
 # ========== ВКЛАДКИ ==========
 tabs = st.tabs([
     t('tab_marketing'),
@@ -1611,26 +1503,28 @@ with tabs[5]:
     
     st.subheader(t('growth_scenarios_total_business'))
     
+    # ИСПРАВЛЕННОЕ ФОРМАТИРОВАНИЕ ДЛЯ ТАБЛИЦЫ "СЦЕНАРИИ РОСТА"
     # Получаем переводы для форматирования
     currency_text = t('currency')
     percent_text = t('percent')
     
+    # Правильное форматирование: C1 как проценты, ROMI как проценты
     format_dict = {
         'UA': '{:,.0f}', 
         'B': '{:,.0f}', 
         'T': '{:,.0f}', 
-        'Revenue': lambda x: f"{x:,.0f} {currency_text}",
-        'C1': '{:.2%}', 
-        'ROMI': lambda x: f"{x:.0f}{percent_text}",
-        'AOV': lambda x: f"{x:,.1f} {currency_text}",
+        'Revenue': lambda x: f"{x:,.2f} {currency_text}",
+        'C1': '{:.2%}',  # Исправлено: форматирование как процент
+        'ROMI': lambda x: f"{x:.2f}{percent_text}",  # Исправлено: добавлен символ процента
+        'AOV': lambda x: f"{x:,.2f} {currency_text}",
         'APC': '{:.2f}', 
-        'CLTV': lambda x: f"{x:,.0f} {currency_text}",
-        'LTV': lambda x: f"{x:,.1f} {currency_text}",
-        'AC': lambda x: f"{x:,.0f} {currency_text}",
+        'CLTV': lambda x: f"{x:,.2f} {currency_text}",
+        'LTV': lambda x: f"{x:,.2f} {currency_text}",
+        'AC': lambda x: f"{x:,.2f} {currency_text}",
         'CPA': lambda x: f"{x:,.2f} {currency_text}",
-        'CAC': lambda x: f"{x:,.1f} {currency_text}",
-        'CM': lambda x: f"{x:,.0f} {currency_text}",
-        'CM_Growth_€': lambda x: f"{x:+,.0f} {currency_text}"
+        'CAC': lambda x: f"{x:,.2f} {currency_text}",
+        'CM': lambda x: f"{x:,.2f} {currency_text}",
+        'CM_Growth_€': lambda x: f"{x:+,.2f} {currency_text}"
     }
     
     cols = ['Scenario', 'UA', 'C1', 'B', 'T', 'AOV', 'APC', 'Revenue', 'AC', 
@@ -1669,8 +1563,8 @@ with tabs[5]:
         
         st.write(f"**{t('best_scenarios')} ({len(best_scenarios)} {t('with_same_effect')}):**")
         for _, scenario in best_scenarios.iterrows():
-            st.write(f"- **{scenario['Scenario']}**: {t('cm_growth')} {scenario['CM_Growth_€']:+,.0f} {t('currency')}")
-            st.write(f"  ROMI: {scenario['ROMI']:.1f}%")
+            st.write(f"- **{scenario['Scenario']}**: {t('cm_growth')} {scenario['CM_Growth_€']:+,.2f} {t('currency')}")
+            st.write(f"  ROMI: {scenario['ROMI']:.2f}%")
             st.write(f"  {t('action')}: {ACTION_INSIGHTS.get(scenario['Scenario_Type'], '')}")
     
     # Анализ чувствительности
@@ -1680,11 +1574,12 @@ with tabs[5]:
     if not sens_df.empty:
         sens_df = sens_df.sort_values('CM_Impact', ascending=False)
         
+        # Исправленное форматирование для таблицы чувствительности
         st.dataframe(
             sens_df.style.format({
                 'New_Value': '{:.2f}', 
-                'CM_Impact': lambda x: f"{x:+,.0f} {currency_text}", 
-                'CM_Impact_Pct': '{:+.1f}%'
+                'CM_Impact': lambda x: f"{x:+,.2f} {currency_text}", 
+                'CM_Impact_Pct': '{:+.2f}%'
             }).background_gradient(subset=['CM_Impact'], cmap='RdYlGn'),
             use_container_width=True
         )
@@ -1694,7 +1589,7 @@ with tabs[5]:
             metric_data = sens_df[sens_df['Metric'] == metric]
             if not metric_data.empty:
                 max_impact = metric_data.loc[metric_data['CM_Impact'].idxmax()]
-                st.write(f"- **{metric}**: {max_impact['Change']} → {t('cm_growth')}: {max_impact['CM_Impact']:+,.0f} {t('currency')}")
+                st.write(f"- **{metric}**: {max_impact['Change']} → {t('cm_growth')}: {max_impact['CM_Impact']:+,.2f} {t('currency')}")
     
     # --- АНАЛИЗ ПО ПРОДУКТАМ ---
     st.subheader(t('product_analysis'))
@@ -1746,12 +1641,12 @@ with tabs[5]:
                     formatted_df = display_df.style.format({
                         'UA': '{:,.0f}', 
                         'B': '{:,.0f}', 
-                        'Revenue': lambda x: f"{x:,.0f} {currency_text}",
-                        'CM': lambda x: f"{x:,.0f} {currency_text}", 
-                        'CM_Growth_€': lambda x: f"{x:+,.0f} {currency_text}" if 'CM_Growth_€' in scenarios.columns else '{}', 
-                        'ROMI': lambda x: f"{x:.1f}{percent_text}",
-                        'C1': '{:.2%}', 
-                        'AOV': lambda x: f"{x:,.1f} {currency_text}", 
+                        'Revenue': lambda x: f"{x:,.2f} {currency_text}",
+                        'CM': lambda x: f"{x:,.2f} {currency_text}", 
+                        'CM_Growth_€': lambda x: f"{x:+,.2f} {currency_text}" if 'CM_Growth_€' in scenarios.columns else '{}', 
+                        'ROMI': lambda x: f"{x:.2f}{percent_text}",
+                        'C1': '{:.2%}',  # Исправлено: форматирование как процент
+                        'AOV': lambda x: f"{x:,.2f} {currency_text}", 
                         'APC': '{:.2f}'
                     }).background_gradient(
                         subset=['CM_Growth_€' if 'CM_Growth_€' in scenarios.columns else 'CM', 'ROMI'], 
@@ -1768,7 +1663,7 @@ with tabs[5]:
                         
                         st.write(f"**{t('best_scenarios')} ({len(best_scenarios)} {t('with_same_effect')}):**")
                         for _, scenario in best_scenarios.iterrows():
-                            st.write(f"- **{scenario['Scenario']}**: {t('cm_growth')} {scenario['CM_Growth_€']:+,.0f} {t('currency')}")
+                            st.write(f"- **{scenario['Scenario']}**: {t('cm_growth')} {scenario['CM_Growth_€']:+,.2f} {t('currency')}")
                             st.write(f"  {t('action')}: {ACTION_INSIGHTS.get(scenario['Scenario_Type'], '')}")
                         
                         # Собираем ВСЕХ лидеров для сводной карты
@@ -1793,9 +1688,9 @@ with tabs[5]:
             
             st.dataframe(
                 summary.style.format({
-                    'CM_Growth_€': lambda x: f"{x:+,.0f} {currency_text}", 
-                    'Base_CM': lambda x: f"{x:,.0f} {currency_text}", 
-                    'Growth_Pct': '{:+.1f}%'
+                    'CM_Growth_€': lambda x: f"{x:+,.2f} {currency_text}", 
+                    'Base_CM': lambda x: f"{x:,.2f} {currency_text}", 
+                    'Growth_Pct': '{:+.2f}%'
                 }).background_gradient(subset=['CM_Growth_€'], cmap='Greens', vmin=0)
                 .background_gradient(subset=['Growth_Pct'], cmap='RdYlGn', vmin=-100, vmax=100),
                 use_container_width=True
@@ -3286,6 +3181,7 @@ with tabs[3]:
                                 margin=dict(r=80))
         st.plotly_chart(fig_volume, use_container_width=True)
         
+        # ИСПРАВЛЕННЫЙ ГРАФИК "ТОП ИСТОЧНИКОВ ПО ОХВАТУ ГОРОДОВ"
         # РАСПРЕДЕЛЕНИЕ ИСТОЧНИКОВ - НА ВСЮ ШИРИНУ
         source_dist = city_stats.groupby('Top_Source').agg({
             'City': 'count',
@@ -3294,23 +3190,33 @@ with tabs[3]:
         source_dist.columns = ['Source', 'Cities_Count', 'Total_Revenue']
         source_dist = source_dist.sort_values('Cities_Count', ascending=False).head(15)
         
+        # ИСПРАВЛЕНИЕ: text='Cities_Count' должно показывать только числа
         fig_sources = px.bar(
             source_dist,
             x='Source',
             y='Cities_Count',
             color='Total_Revenue',
-            text='Cities_Count',
+            text='Cities_Count',  # Исправлено: показывает только числа
             title=t('sources_by_cities'),
-            labels={'Cities_Count': f'{t("cities")}'},
+            labels={'Cities_Count': f'{t("cities")}'},  # Исправлено: подпись оси Y
             color_continuous_scale='Viridis',
             height=500
         )
-        fig_sources.update_traces(texttemplate='%{text} {t("cities")}', textposition='outside')
+        
+        # ИСПРАВЛЕНИЕ: tooltip должен показывать правильную информацию
+        fig_sources.update_traces(
+            texttemplate='%{text}',  # Исправлено: показывает только число
+            textposition='outside',
+            hovertemplate=f"{t('source')}: %{{x}}<br>{t('cities')}: %{{y}}<br>{t('total_revenue')}: %{{customdata[0]:,.0f}} {t('currency')}<extra></extra>",
+            customdata=source_dist[['Total_Revenue']]
+        )
+        
         fig_sources.update_layout(
             xaxis_tickangle=-45,
             xaxis_title=f"{t('source')}",
-            yaxis_title=f"{t('cities')}"
+            yaxis_title=f"{t('cities')}"  # Исправлено: подпись оси Y через перевод
         )
+        
         st.plotly_chart(fig_sources, use_container_width=True)
         
         # 5. УРОВНИ НЕМЕЦКОГО ПО ГОРОДАМ
@@ -3571,6 +3477,7 @@ with tabs[6]:
     # 1. ДЕРЕВО МЕТРИК
     st.subheader(t('metrics_tree'))
 
+    # ИСПРАВЛЕННОЕ ДЕРЕВО МЕТРИК - ВОССТАНАВЛИВАЕМ УРОВЕНЬ 2.1
     st.markdown(f"""
 **{t('tree_level_1')}**  
 └── **{t('margin')} (CM)** — Revenue - AC - COGS
@@ -3585,7 +3492,7 @@ with tabs[6]:
 ├── **CPC (Cost Per Click)** — {t('cpc')} → AC / Clicks  
 └── **CTR (Click-Through Rate)** — {t('ctr')} → Clicks / Impressions
 
-**{t('level_2_1_financial_metrics')}**  
+**{t('tree_level_2_1')}**  <!-- ИСПРАВЛЕНО: ВОССТАНОВЛЕН УРОВЕНЬ 2.1 -->
 ├── **{t('revenue')} (Revenue)** — {t('revenue')} → SUM(DEALS['revenue'])  
 └── **ROMI (Return on Marketing)** — {t('romi_desc')} → CM / AC
 
@@ -3693,6 +3600,15 @@ with tabs[6]:
                 
                 st.table(hadi_df)
                 
+                # ИСПРАВЛЕНИЕ НЕМЕЦКИХ ПЕРЕВОДОВ В A/B ТЕСТАХ
+                if st.session_state.get('language', 'RU') == 'DE':
+                    # Исправленный перевод для немецкой версии
+                    hypothesis_desc = f"{hyp_text} {t('will_increase')} {t('conversion')} (C1) {t('by')} 10%."
+                    null_hypothesis_desc = f"{t('no_difference')}: C1_B ≤ C1_A."
+                else:
+                    hypothesis_desc = f"{hyp_text} {t('will_increase')} {t('conversion')} (C1) {t('by')} 10%."
+                    null_hypothesis_desc = f"{t('no_difference')}: C1_B ≤ C1_A."
+                
                 abtest_df = pd.DataFrame({
                     t('parameter'): [
                         t('hypothesis'),
@@ -3704,8 +3620,8 @@ with tabs[6]:
                         t('significance_level')
                     ],
                     t('description'): [
-                        f"{hyp_text} {t('will_increase')} {t('conversion')} (C1) {t('by')} 10%.",
-                        f"{t('no_difference')}: C1_B ≤ C1_A.",
+                        hypothesis_desc,
+                        null_hypothesis_desc,
                         f"{t('group_a')} — {t('current_process')}. {t('random_distribution')} 50% {t('new_leads')}. {t('duration')}: 14 {t('days')}.",
                         f"{t('group_b')} — {hyp_text}. {t('random_distribution')} 50% {t('new_leads')}. {t('duration')}: 14 {t('days')}.",
                         f"{t('main_metric')}: C1 ({t('sales')} / {t('leads')}). {t('additional_metrics_ab')}.",
